@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sekolah;
 use Alert;
+
 class SekolahController extends Controller
 {
     //
     public function __construct()
     {
-        $this->middleware(function($request,$next){
+        $this->middleware(function ($request, $next) {
             if (session('success')) {
                 Alert::success(session('success'));
             }
@@ -19,7 +20,7 @@ class SekolahController extends Controller
             if (session('error')) {
                 Alert::error(session('error'));
             }
-            
+
             if (session('warning')) {
                 Alert::warning(session('warning'));
             }
@@ -28,9 +29,10 @@ class SekolahController extends Controller
     }
 
     //data sekolah kompliit
-    public function datasekolah(){
+    public function datasekolah()
+    {
         $viewData = Sekolah::all();
-        return view ('sekolah.data-school-admin',compact('viewData'));
+        return view('sekolah.data-school-admin', compact('viewData'));
     }
 
     public function simpansekolah(Request $a)
@@ -45,33 +47,36 @@ class SekolahController extends Controller
 
             ]);
             return redirect('/data-sekolah')->with('success', 'Data Tersimpan!!');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             echo $e;
             //return redirect()->back()->with('error', 'Data Tidak Berhasil Disimpan!');
         }
     }
-    public function updatesekolah(Request $a, $NPSN){
+    public function updatesekolah(Request $a, $NPSN)
+    {
         //$dataUser = Pengguna::all();
-    try{
-        Sekolah::where("NPSN", "$NPSN")->update([
-            'nama_sekolah' => $a->nama,
-            'alamat' => $a->Address,
-            'kota' => $a->kota
-        ]);
-        return redirect('/data-sekolah')->with('success', 'Data Terubah!!');
-    } catch (\Exception $e){
-        return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah!');
+        try {
+            Sekolah::where("NPSN", "$NPSN")->update([
+                'nama_sekolah' => $a->nama,
+                'alamat' => $a->Address,
+                'kota' => $a->kota
+            ]);
+            return redirect('/data-sekolah')->with('success', 'Data Terubah!!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah!');
         }
     }
 
-    public function hapussekolah($NPSN){
+    public function hapussekolah($id)
+    {
         //$dataUser = Pengguna::all();
-    try{
-        $dataSekolah = Sekolah::find($NPSN);
-        $dataSekolah->delete();
-        return redirect('/data-sekolah')->with('success', 'Data Terhapus!!');
-    } catch (\Exception $e){
-        return redirect()->back()->with('error', 'Data Tidak Terhapus!');
-    }
+        try {
+            $dataSekolah = Sekolah::find($id);
+            // dd($dataSekolah);
+            $dataSekolah->delete();
+            return redirect('/data-sekolah')->with('success', 'Data Terhapus!!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Tidak Terhapus!');
+        }
     }
 }

@@ -9,13 +9,13 @@ class Sekolah extends Model
 {
     use HasFactory;
     protected $table = "sekolah";
-    protected $primaryKey= "npsn";
-    protected $fillable = ["npsn","nama_sekolah","alamat","kota"];
-    public $timestamps = false;
+    protected $primaryKey = "id";
+    protected $fillable = ["npsn", "nama_sekolah", "alamat", "kota"];
+    public $timestamps = true;
     public $incrementing = false;
 
-    public function pendaftaran(){
+    public function pendaftaran()
+    {
         return $this->hasMany(Pendaftaran::class);
     }
-    
 }

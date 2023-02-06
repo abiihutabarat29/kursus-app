@@ -16,9 +16,9 @@
 @endsection
 
 @section('menu')
-@auth
+    @auth
         <ul class="metismenu" id="menu">
-            <li><a href="{{route('dashboard')}}">
+            <li><a href="{{ route('dashboard') }}">
                     <i class="fas fa-home"></i>
                     <span class="nav-text">Beranda</span>
                 </a>
@@ -29,9 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-user')}}">Pengguna</a></li>
-                        <li><a href="{{route('data-sekolah')}}">Sekolah</a></li>
-                        <li><a href="{{route('data-kursus')}}">Kursus</a></li>
+                        <li><a href="{{ route('data-user') }}">Pengguna</a></li>
+                        <li><a href="{{ route('data-sekolah') }}">Sekolah</a></li>
+                        <li><a href="{{ route('data-kursus') }}">Kursus</a></li>
 
                     </ul>
                 </li>
@@ -40,22 +40,22 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-registration')}}">Pendaftaran</a></li>
-                        <li><a href="{{route('data-pembayaran')}}">Pembayaran</a></li>
+                        <li><a href="{{ route('data-registration') }}">Pendaftaran</a></li>
+                        <li><a href="{{ route('data-pembayaran') }}">Pembayaran</a></li>
                     </ul>
                 </li>
 
-            <li><a href="{{route('data-pengumuman')}}" aria-expanded="false">
-                <i class="fa fa-file"></i>
-                <span class="nav-text">Pengumuman</span>
-            </a>
-        </li>
+                <li><a href="{{ route('data-pengumuman') }}" aria-expanded="false">
+                        <i class="fa fa-file"></i>
+                        <span class="nav-text">Pengumuman</span>
+                    </a>
+                </li>
             @else
-                            <li><a href="{{route('data-registration')}}" aria-expanded="false">
-                                    <i class="fa fa-database"></i>
-                                    <span class="nav-text">Pendaftaran</span>
-                                </a>
-                            </li>
+                <li><a href="{{ route('data-registration') }}" aria-expanded="false">
+                        <i class="fa fa-database"></i>
+                        <span class="nav-text">Pendaftaran</span>
+                    </a>
+                </li>
             @endif
         </ul>
     @endauth
@@ -70,9 +70,10 @@
 
                     <!-- center modal -->
                     <div>
-                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i class="fa fa-print"> </i></button>
+                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
+                                class="fa fa-print"> </i></button>
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
-                        style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Sekolah</button>
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Sekolah</button>
                     </div>
 
 
@@ -88,7 +89,7 @@
                                 <div class="modal-body">
                                     <form action="save-school" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" name="userid" value="{{ auth()->user()->id}}">
+                                        <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xl-4">
@@ -105,29 +106,28 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="iduser">Alamat</label>
-                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control"
-                                                placeholder="Enter Address"></textarea>
+                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control" placeholder="Enter Address"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="iduser">Kabupaten/Kota</label>
 
-                                            <input class="form-control" list="datalistOptionsSekolah"
-                                            id="exampleDataList" placeholder="Pilih wilayah" name="kota"
-                                            value="{{ old('kota') }}">
-                                        <datalist id="datalistOptionsSekolah">
-                                            <option value="Purwakarta">Purwakarta</option>
-                                            <option value="Subang">Subang</option>
-                                            <option value="Karawang">Karawang</option>
-                                            <option value="Bandung">Bandung</option>
-                                            <option value="Banten">Banten</option>
-                                            <option value="Bekasi">Bekasi</option>
-                                            <option value="Bogor">Bogor</option>
-                                        </datalist>
+                                            <input class="form-control" list="datalistOptionsSekolah" id="exampleDataList"
+                                                placeholder="Pilih wilayah" name="kota" value="{{ old('kota') }}">
+                                            <datalist id="datalistOptionsSekolah">
+                                                <option value="Purwakarta">Purwakarta</option>
+                                                <option value="Subang">Subang</option>
+                                                <option value="Karawang">Karawang</option>
+                                                <option value="Bandung">Bandung</option>
+                                                <option value="Banten">Banten</option>
+                                                <option value="Bekasi">Bekasi</option>
+                                                <option value="Bogor">Bogor</option>
+                                            </datalist>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
                                                 data-bs-dismiss="modal">Tutup</button>
-                                            <button type="submit" name="add" class="btn btn-primary">Tambahkan Data</button>
+                                            <button type="submit" name="add" class="btn btn-primary">Tambahkan
+                                                Data</button>
                                         </div>
                                     </form>
                                 </div>
@@ -166,8 +166,8 @@
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target=".delete{{  $x->NPSN }}"></i></a>
-                                                <div class="modal fade delete{{  $x->NPSN }}" tabindex="-1"
+                                                        data-bs-target=".delete{{ $x->id }}"></i></a>
+                                                <div class="modal fade delete{{ $x->id }}" tabindex="-1"
                                                     role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
@@ -178,12 +178,13 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body text-center"><i
-                                                                    class="fa fa-trash"></i><br>  Anda yakin ingin menghapus data ini?<br>{{ $x->NPSN }}
+                                                                    class="fa fa-trash"></i><br> Anda yakin ingin menghapus
+                                                                data ini?<br>{{ $x->id }}
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger light"
                                                                     data-bs-dismiss="modal">Batalkan</button>
-                                                                <a href="delete-school/{{ $x->NPSN }}">
+                                                                <a href="delete-school/{{ $x->id }}">
                                                                     <button type="submit" class="btn btn-danger shadow">
                                                                         Ya, Hapus Data!
                                                                     </button></a>
@@ -210,19 +211,20 @@
                                                     <form action="update-school/{{ $x->NPSN }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         {{ csrf_field() }}
-                                                        <input type="hidden" name="userid" value="{{ auth()->user()->id}}">
+                                                        <input type="hidden" name="userid"
+                                                            value="{{ auth()->user()->id }}">
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-xl-4">
                                                                     <label for="iduser">NPSN</label>
-                                                                    <input type="text" class="form-control" id="nama"
-                                                                        value="{{ $x->NPSN }}"
+                                                                    <input type="text" class="form-control"
+                                                                        id="nama" value="{{ $x->NPSN }}"
                                                                         placeholder="Enter NPSN" name="id" readonly>
                                                                 </div>
                                                                 <div class="col-xl-8">
                                                                     <label for="iduser">Nama Sekolah</label>
-                                                                    <input type="text" class="form-control" id="nama"
-                                                                        value="{{ $x->nama_sekolah }}"
+                                                                    <input type="text" class="form-control"
+                                                                        id="nama" value="{{ $x->nama_sekolah }}"
                                                                         placeholder="Enter School Name" name="nama"
                                                                         required>
                                                                 </div>
@@ -230,13 +232,13 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="iduser">Alamat</label>
-                                                            <textarea name="Address" id="" cols="30" rows="5"
-                                                                class="form-control">{{ $x->alamat }}</textarea>
+                                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control">{{ $x->alamat }}</textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="iduser">Kabupaten/Kota</label>
                                                             <input class="form-control" list="datalistOptionsSekolah"
-                                                                id="exampleDataList" name="kota" value="{{ $x->kota }}">
+                                                                id="exampleDataList" name="kota"
+                                                                value="{{ $x->kota }}">
                                                             <datalist id="datalistOptionsSekolah">
                                                                 <option value="Purwakarta">Purwakarta</option>
                                                                 <option value="Subang">Subang</option>
@@ -250,7 +252,8 @@
                                                         <div class="modal-footer border-top-0 d-flex">
                                                             <button type="button" class="btn btn-danger light"
                                                                 data-bs-dismiss="modal">Tutup</button>
-                                                            <button type="submit" name="add" class="btn btn-primary">Perbaharui
+                                                            <button type="submit" name="add"
+                                                                class="btn btn-primary">Perbaharui
                                                                 Data</button>
                                                         </div>
                                                     </form>

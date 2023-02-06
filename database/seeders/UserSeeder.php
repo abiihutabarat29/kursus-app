@@ -96,13 +96,13 @@ class UserSeeder extends Seeder
         ]);
 
         ProfileUsers::create([
-            'user_id' => 3,
+            'user_id' => 4,
             'nama' => 'Abii Hutabarat',
             'email' => 'abiihutabarat29@gmail.com',
             'created_at' => now()
         ]);
         Timeline::create([
-            'user_id' => 3,
+            'user_id' => 4,
             'status' => "Bergabung",
             'pesan' => 'Membuat Akun baru',
             'tgl_update' => now(),
@@ -119,13 +119,13 @@ class UserSeeder extends Seeder
         ]);
 
         ProfileUsers::create([
-            'user_id' => 3,
+            'user_id' => 5,
             'nama' => 'Jasmine Mutiara Bintang',
             'email' => 'jasminemutiara@gmail.com',
             'created_at' => now()
         ]);
         Timeline::create([
-            'user_id' => 3,
+            'user_id' => 5,
             'status' => "Bergabung",
             'pesan' => 'Membuat Akun baru',
             'tgl_update' => now(),

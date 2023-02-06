@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/data-sekolah', [SekolahController::class, 'datasekolah'])->name('data-sekolah');
     Route::post('/save-school', [SekolahController::class, 'simpansekolah']);
     Route::post('/update-school/{NPSN}', [SekolahController::class, 'updatesekolah']);
-    Route::get('/delete-school/{NPSN}', [SekolahController::class, 'hapussekolah']);
+    Route::get('/delete-school/{id}', [SekolahController::class, 'hapussekolah']);
 
     //kursus
     Route::get('/data-kursus', [ProgramStudiController::class, 'datakursus'])->name('data-kursus');
@@ -103,4 +103,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete-announcement/{id_pengumuman}', [PengumumanController::class, 'hapuspengumuman']);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
